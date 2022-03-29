@@ -1,5 +1,4 @@
 import scraping
-import time
 import data
 
 
@@ -19,7 +18,7 @@ if __name__ == '__main__':
 
     i = 0
     while i < meses_analizar:
-        url = scraping.read_page(url, series)
+        url = scraping.read_page(url, url_base, series)
         print(series)
         if url == '-1':
             break
@@ -29,6 +28,6 @@ if __name__ == '__main__':
     # Se avisa que no se analizaron todos los meses posibles
     if i < meses_analizar:
         print('Se encontraron problemas durante el proceso y se analizó {} meses'.format(i))
-    scraping.serie_summary(series, url_base)
+    scraping.episode_summary(series, url_base)
     print(series)
     data.save_dictionary(series)

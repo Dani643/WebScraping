@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 from scraping.connection import data_retrieve
+from scraping.summary import serie_summary
 
 
-def read_page(url, series):
+def read_page(url, url_base, series):
     """Función que para una página del calendario devuelve un diccionario con las series encontradas
     en cada uno de los días
 
@@ -36,10 +37,13 @@ def read_page(url, series):
                 ruta = rutas[-1]['href']
                 # Si la serie existe se añade el capítulo, si no se crea en el diccionario
                 if texto[0] in series.keys():
-                    series[texto[0]][texto[1]] = [fecha, ruta, ""]
+                    series[texto[0]]['Episodios'][texto[1]] = [fecha, ruta, ""]
                 else:
                     series[texto[0]] = dict()
-                    series[texto[0]][texto[1]] = [fecha, ruta, ""]
+                    # Si no se conocía la serie se recuperan sus datos
+                    series[texto[0]]['Datos'] = serie_summary(url_base + '/cat/' + rutas[0]['href'])
+                    series[texto[0]]['Episodios'] = dict()
+                    series[texto[0]]['Episodios'][texto[1]] = [fecha, ruta, ""]
         return previo.a['href']
     else:
         return '-1'

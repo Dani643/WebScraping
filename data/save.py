@@ -8,7 +8,8 @@ def save_dictionary(series):
         writer = csv.writer(f, delimiter=';')
         writer.writerow(header)
         for nombre in series.keys():
-            for episodio in series[nombre].keys():
-                row = [nombre, episodio, series[nombre][episodio][0], series[nombre][episodio][2].replace('\n', ' ')]
+            for episodio in series[nombre]['Episodios'].keys():
+                row = [nombre, episodio, series[nombre]['Episodios'][episodio][0],
+                       series[nombre]['Episodios'][episodio][2].replace('\n', ' ')]
                 writer.writerow(row)
     return 0
