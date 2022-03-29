@@ -15,16 +15,14 @@ def serie_summary(series, url_base):
     for nombre in series.keys():
         for episodio in series[nombre].keys():
             # Si está vacío o no se pudo recuperar anteriormente se rellena con el resumen
-            if series[nombre][episodio][1] == '' or series[nombre][episodio][1] == 'No recuperable':
+            if series[nombre][episodio][2] == '' or series[nombre][episodio][2] == 'No recuperable':
                 # Se construye la url con el sumario del episodio
-                url = url_base + '/cat/' + series[nombre][episodio][0]
-                # Se espera un segundo entre consultas
-                time.sleep(1)
+                url = url_base + '/cat/' + series[nombre][episodio][1]
                 html = data_retrieve(url)
                 if html != '-1':
                     bs = BeautifulSoup(html.text, 'html.parser')
                     # Se guardan los datos relativos a la página previa del calendario
                     summary = bs.find('p', {"class": 'sumtext'})
-                    series[nombre][episodio][1] = summary.get_text()
+                    series[nombre][episodio][2] = summary.get_text()
                 else:
-                    series[nombre][episodio][1] = 'No recuperable'
+                    series[nombre][episodio][2] = 'No recuperable'

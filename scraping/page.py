@@ -25,8 +25,7 @@ def read_page(url, series):
         days = bs.find_all('div', {"class": 'day'})
         for day in days:
             # Se guarda el día del calendario que se analiza
-            fecha = day['id'][2:]
-            print(fecha)
+            fecha = day['id'][2:].replace("_", "-")
             # Se procesa cada una de las filas del día
             filas = day.find_all('div', {"class": 'info'})
             for fila in filas:
@@ -37,10 +36,10 @@ def read_page(url, series):
                 ruta = rutas[-1]['href']
                 # Si la serie existe se añade el capítulo, si no se crea en el diccionario
                 if texto[0] in series.keys():
-                    series[texto[0]][texto[1]] = [ruta, ""]
+                    series[texto[0]][texto[1]] = [fecha, ruta, ""]
                 else:
                     series[texto[0]] = dict()
-                    series[texto[0]][texto[1]] = [ruta, ""]
+                    series[texto[0]][texto[1]] = [fecha, ruta, ""]
         return previo.a['href']
     else:
         return '-1'
