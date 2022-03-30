@@ -13,8 +13,8 @@ def episode_summary(series, url_base):
     """
     for nombre in series.keys():
         for episodio in series[nombre]['Episodios'].keys():
-            # Si está vacío o no se pudo recuperar anteriormente se rellena con el resumen
-            if series[nombre]['Episodios'][episodio][2] == '' or series[nombre]['Episodios'][episodio][2] == 'No recuperable':
+            # Si está vacío se rellena con el resumen
+            if series[nombre]['Episodios'][episodio][2] == '':
                 # Se construye la url con el sumario del episodio
                 url = url_base + '/cat/' + series[nombre]['Episodios'][episodio][1]
                 html = data_retrieve(url)
@@ -36,18 +36,19 @@ def serie_summary(url):
     Devuelve:
         datos: lista con los datos de la serie
     """
-    resumen = list()
+    datos = list()
     html = data_retrieve(url)
     if html != '-1':
         bs = BeautifulSoup(html.text, 'html.parser')
-        # Se guardan los datos relativos a la página previa del calendario
-        summary = bs.find('p', {"class": 'sumtext'})
-        resumen.append(summary.get_text())
-        datos = bs.find('ul', {"class": 'furtherinfo'}).get_text().split('\n')
-        for i in datos:
+        # Se guardan las características de la serie, tipo, duración, temporadas, etc..
+        caracteristicas = bs.find('ul', {"class": 'furtherinfo'}).get_text().split('\n')
+        for i in caracteristicas:
             if i != "":
-                dato = i.split(":", 1)
-                resumen.append(dato[1].strip())
+                caracteristica = i.split(":", 1)
+                datos.append(caracteristica[1].strip())
+        # Se guardan el resumen de la serie
+        summary = bs.find('p', {"class": 'sumtext'})
+        datos.append(summary.get_text())
     else:
-        resumen.append('Sin resumen')
-    return resumen
+        datos.append('Sin datos')
+    return datos
