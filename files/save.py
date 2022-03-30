@@ -15,7 +15,7 @@ def save_dictionary(series, resumen_capitulo):
     header = ['Serie', 'Canal de emisión', 'Tipo de serie', 'Día de emisión', 'País', 'Duración', 'Estado',
               'Resumen de la serie', 'Número del capitulo', 'Fecha de emisión']
     if resumen_capitulo:
-        with open('capitulos_db.csv', 'w', newline='') as f:
+        with open('./data/capitulos_db.csv', 'w', newline='') as f:
             header.append('Resumen del capitulo')
             writer = csv.writer(f, delimiter=';')
             writer.writerow(header)
@@ -27,7 +27,7 @@ def save_dictionary(series, resumen_capitulo):
                            series[nombre]['Episodios'][episodio][0],
                            series[nombre]['Episodios'][episodio][2].replace('\n', ' ')]
                     writer.writerow(row)
-    with open('series_db.csv', 'w', newline='') as f:
+    with open('./data/series_db.csv', 'w', newline='') as f:
         writer = csv.writer(f, delimiter=';')
         writer.writerow(header)
         for nombre in series.keys():
@@ -37,4 +37,3 @@ def save_dictionary(series, resumen_capitulo):
                        series[nombre]['Datos'][5], series[nombre]['Datos'][6], episodio,
                        series[nombre]['Episodios'][episodio][0]]
                 writer.writerow(row)
-    return 0

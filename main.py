@@ -1,18 +1,19 @@
 import scraping
-import data
+import files
 
 
 if __name__ == '__main__':
-    # Nombre de las direcciones web necesarias
-    url = 'https://www.pogdesign.co.uk/cat/'
-    url_base = 'https://www.pogdesign.co.uk'
-    # Se crea un diccionario para los datos
-    series = dict()
     # Número de meses a analizar
-    meses_analizar = 1
+    meses_analizar = 12
     # Se configura si se quiere recuperar el resumen de cada capítulo
     resumen_capitulo = 0
+    # Nombre de las direcciones web necesarias
+    url_base = 'https://www.pogdesign.co.uk'
+    url = url_base + '/cat/'
+    # Se crea un diccionario para los datos
+    series = dict()
 
+    # Se itera por todas las páginas del calendario por cuantos meses se quiera obtener
     i = 0
     while i < meses_analizar:
         url = scraping.read_page(url, url_base, series)
@@ -21,10 +22,10 @@ if __name__ == '__main__':
         else:
             url = url_base + url
             i += 1
-    # Se avisa que no se analizaron todos los meses posibles
+    # Se avisa que no se han podido analizar todos los meses posibles ya que ha existido un problema
     if i < meses_analizar:
         print('Se encontraron problemas durante el proceso y se analizó {} meses'.format(i))
     if resumen_capitulo == 1:
         scraping.episode_summary(series, url_base)
     print(series)
-    data.save_dictionary(series, resumen_capitulo)
+    files.save_dictionary(series, resumen_capitulo)
