@@ -27,7 +27,6 @@ def read_page(url, url_base, series):
         for day in days:
             # Se guarda el día del calendario que se analiza
             fecha = day['id'][2:].replace("_", "-")
-            print(fecha)
             # Se procesa cada una de las filas del día
             filas = day.find_all('div', {"class": 'info'})
             for fila in filas:
@@ -42,7 +41,6 @@ def read_page(url, url_base, series):
                 else:
                     series[texto[0]] = dict()
                     # Si no se conocía la serie se recuperan sus datos
-                    # print(url_base + '/cat/' + rutas[0]['href'])
                     series[texto[0]]['Datos'] = serie_summary(url_base + '/cat/' + rutas[0]['href'])
                     series[texto[0]]['Episodios'] = dict()
                     series[texto[0]]['Episodios'][texto[1]] = [fecha, ruta, ""]

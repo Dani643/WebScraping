@@ -4,9 +4,9 @@
 
 El proyecto "WebScraping" se presenta como la solución de la Práctica 1 de la asignatura Tipología y ciclo de vida de los datos. 
 
-Este proyecto realiza webscraping sobre una web que contiene un calendario de series historico, de manera que pueda generarse un dataset que permita analizar la evolución de esta industria audiovisual, en formato de tipos de contenidos y volumenes a lo largo de los años.
+Este proyecto realiza webscraping sobre una [web](https://www.pogdesign.co.uk/cat/) que contiene un calendario de series histórico, de manera que pueda generarse un dataset que permita analizar la evolución de esta industria audiovisual, en formato de tipos de contenidos y volúmenes a lo largo de los años.
 
-Además sirve como base de datos historica de cada una de las series emitidas en televisión con el paso de los años.
+Además sirve como base de datos histórica de cada una de las series emitidas en televisión con el paso de los años.
 
 ## Equipo
 
@@ -22,9 +22,9 @@ WebScraping
 ├── README.md       		- Este fichero explicativo
 ├── requirements.txt       	- Librerías necesarias para ejecutar el paquete
 │
-├── data			- Dataset generados durante el proceso
+├── data_processed              - Dataset generados durante el proceso
 │
-├── files			- Código para trabajar con los ficheros generados
+├── files			- Código para trabajar con los dataset generados
 │   ├── __init__.py    		- Indicación de paquete Python
 │   └── save.py			- Código para guardar los datos en ficheros
 │
