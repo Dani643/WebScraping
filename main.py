@@ -6,7 +6,7 @@ if __name__ == '__main__':
     # Número de meses a analizar. 1200 meses es más del máximo para llegar a la primera serie
     meses_analizar = 1200
     # Se configura si se quiere recuperar el resumen de cada capítulo. El número de conexiones si se omite
-    # se reducirá ampliamente
+    # se reducirá considerablemente
     resumen_capitulo = 0
     # Nombre de las direcciones web necesarias
     url_base = 'https://www.pogdesign.co.uk'

@@ -50,5 +50,6 @@ def serie_summary(url):
         summary = bs.find('p', {"class": 'sumtext'})
         datos.append(summary.get_text())
     else:
-        datos.append('Sin datos')
+        for i in range(7):
+            datos.append('NA')
     return datos

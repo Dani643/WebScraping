@@ -32,4 +32,10 @@ def data_retrieve(url):
         return '-1'
     else:
         if html.status_code == 200:
-            return html
+            # Se detecta si se ha redireccionado a la web principal por ausencia de la web
+            if html.url == url:
+                return html
+            else:
+                return '-1'
+        else:
+            return '-1'
