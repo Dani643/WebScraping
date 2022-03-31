@@ -22,7 +22,9 @@ WebScraping
 ├── README.md       		- Este fichero explicativo
 ├── requirements.txt       	- Librerías necesarias para ejecutar el paquete
 │
-├── data_processed              - Dataset generados durante el proceso
+├── data_processed              - Datasets generados durante el proceso
+├── series_db.csv    		- Dataset generado
+├── series_db.csv.zip    	- Solo si el fichero es > 10MB para poder subir a GitHub
 │
 ├── files			- Código para trabajar con los dataset generados
 │   ├── __init__.py    		- Indicación de paquete Python
