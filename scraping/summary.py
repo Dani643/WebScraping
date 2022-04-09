@@ -40,7 +40,7 @@ def serie_summary(url):
     html = data_retrieve(url)
     if html != '-1':
         bs = BeautifulSoup(html.text, 'html.parser')
-        # Se guardan las características de la serie, tipo, duración, temporadas, etc..
+        # Se guardan las características de la serie, tipo, duración, temporadas, etc...
         caracteristicas = bs.find('ul', {"class": 'furtherinfo'}).get_text().split('\n')
         for i in caracteristicas:
             if i != "":

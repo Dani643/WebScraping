@@ -19,7 +19,7 @@ def data_retrieve(url):
                              " (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"}
     retardo = 1
     try:
-        # Se espera entre peticiones
+        # Se espera un tiempo entre peticiones
         time.sleep(retardo)
         html = requests.get(url, headers=headers)
     except requests.exceptions.Timeout:
