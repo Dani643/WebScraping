@@ -4,7 +4,7 @@ from scraping.summary import serie_summary
 
 
 def read_page(url, url_base, series):
-    """Función que para una página del calendario devuelve un diccionario con las series encontradas
+    """Función que para una página del calendario, devuelve un diccionario con las series encontradas
     en cada uno de los días
 
     Argumentos:
