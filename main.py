@@ -10,7 +10,7 @@ if __name__ == '__main__':
     resumen_capitulo = 0
     # Nombre de las direcciones web necesarias
     url_base = 'https://www.pogdesign.co.uk'
-    url = url_base + '/cat/1-1981'
+    url = url_base + '/cat/'
     # Se crea un diccionario para los datos
     series = dict()
 

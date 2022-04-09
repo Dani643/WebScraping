@@ -17,12 +17,12 @@ def save_dictionary(series, resumen_capitulo):
     path = 'data_processed'
     fichero_series = 'series_db.csv'
     fichero_capitulos = 'capitulos_db.csv'
-    header = ['Serie', 'Canal de emisión', 'Tipo de serie', 'Día de emisión', 'País', 'Duración', 'Estado',
-              'Resumen de la serie', 'Número del capitulo', 'Fecha de emisión']
-    # Se crea el fichero con los resumenes de capitulos si se han procesado
+    header = ['Serie', 'Network (Channel)', 'Category / Genre', 'Broadcast Airs', 'Country', 'Episode Length',
+              'Show Status', 'Summary', 'Episode Number', 'Aired Date']
+    # Se crea el fichero con los resúmenes de capítulos si se han procesado
     if resumen_capitulo:
         with open(os.path.join(path, fichero_capitulos), 'w', newline='') as f:
-            header.append('Resumen del capitulo')
+            header.append('Episode summary')
             writer = csv.writer(f, delimiter=';')
             writer.writerow(header)
             for nombre in series.keys():

@@ -12,19 +12,27 @@ Además sirve como base de datos histórica de cada una de las series emitidas e
 
 Está practica ha sido desarrollada de manera individual por Daniel González Rodríguez.
 
+## DOI de Zenodo
+
+El DOI de Zenodo obtenido tras publicar el dataset es el siguiente: [10.5281/zenodo.6426938](https://doi.org/10.5281/zenodo.6426938)
+
 ## Estructura del código:
 
 La estructura seguida para el proyecto es la siguiente:
 
 ```
 WebScraping
-├── main.py       		- Script para iniciar el proceso de web scraping
 ├── README.md       		- Este fichero explicativo
 ├── requirements.txt       	- Librerías necesarias para ejecutar el paquete
 │
-├── data_processed              - Datasets generados durante el proceso
-├── series_db.csv    		- Dataset generado
-├── series_db.csv.zip    	- Solo si el fichero es > 10MB para poder subir a GitHub
+├── data_processed              - Carpeta con los datos generados durante el proceso
+│   ├── series_db.csv    	- Dataset generado (solo si es <= 10 MB)
+│   └── series_db.csv.zip    	- Data set comprimido si el fichero es > 10MB para poder subir a GitHub
+│
+│── pdf 			- Carpeta para el reporte con las respuestas del trabajo
+│   └── respuestas.pdf		- Pdf con las respuestas de la práctica
+│
+├── main.py       		- Script para iniciar el proceso de web scraping
 │
 ├── files			- Código para trabajar con los dataset generados
 │   ├── __init__.py    		- Indicación de paquete Python
